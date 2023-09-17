@@ -20,13 +20,17 @@
                             <td>{{ $item->text }}</td>
                             <td>{{ $item->created_at }}</td>
                             <td>
-                                <button class="btn btn-sm btn-danger"
-                                    wire:click='delete({{ $item->id }})'>Delete</button>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-sm btn-warning"
+                                        wire:click='edit({{ $item->id }})'>Edit</button>
+                                    <button class="btn btn-sm btn-danger"
+                                        wire:click='delete({{ $item->id }})'>Delete</button>
+                                </div>
                             </td>
                         </tr>
                     @empty
                         <tr>
-                            <td>Data Kosong</td>
+                            <td colspan="3" class="text-center">Data Kosong</td>
                         </tr>
                     @endforelse
                 </tbody>

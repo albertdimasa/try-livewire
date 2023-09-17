@@ -12,16 +12,26 @@ use Livewire\Component;
 class Index extends Component
 {
     #[On('NoteCreated')] // Ketika dispatch maka harus di Listen atau ON
+    public function testData(Note $note)
+    {
+        // $this->dispatch('notify');
+        $this->dispatch('notify');
+    }
 
     public function delete(Note $note)
     {
         $note->delete();
     }
+    
+    public function edit(Note $note)
+    {
+        $this->dispatch('NoteEdit', $note->id);
+    }
 
     public function render()
     {
         return view('livewire.note.index', [
-            'notes' => Note::query()->latest()->get(),
+            'notes' => Note::query()->latest()->get()
         ]);
     }
 }
