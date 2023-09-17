@@ -45,4 +45,15 @@ jobs:
           user: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local_dir: "./repositories/try-livewire"
-          delete: "false"
+          delete: false
+          remote_dir: ./
+          max_retries: 10
+          no_symlinks: true
+          ftp_ssl_allow: false
+          ftp_use_feat: false
+          ftp_nop_interval: 2
+          net_max_retries: 1
+          net_persist_retries: 5
+          net_timeout: 15s
+          dns_max_retries: 8
+          dns_fatal_timeout: 10s
