@@ -1,3 +1,6 @@
 <div>
-    If you look to others for fulfillment, you will never truly be fulfilled.
+    Daftar kumpulan projek gabut dan yang udah jadi yaitu:
+    <ol>
+        <li>Notes</li>
+    </ol>
 </div>

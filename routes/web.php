@@ -7,4 +7,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', Home::class)->name('home');
 Route::get('/about', About::class)->name('about');
-Route::get('note', Note\Index::class)->name('note.index');
+Route::get('notes', Note\Index::class)->name('note.index');
