@@ -38,7 +38,7 @@ return [
     |
     */
 
-    'layout' => 'layouts.app',
+    'layout' => 'components.layouts.app',
 
     /*
     |---------------------------------------------------------------------------
@@ -155,4 +155,6 @@ return [
     */
 
     'pagination_theme' => 'tailwind',
+
+    'asset_url' => config('app.url'),
 ];

@@ -6,5 +6,5 @@ use App\Livewire\Note;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', Home::class)->name('home');
-Route::get('/about', About::class)->name('about');
+Route::get('about', About::class)->name('about');
 Route::get('notes', Note\Index::class)->name('note.index');
