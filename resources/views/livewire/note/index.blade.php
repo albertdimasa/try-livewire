@@ -3,7 +3,6 @@
         <div class="col-md-5">
             @livewire('note.create')
         </div>
-
         <div class="col-md-7">
             <h5 class="card-title">Notes</h5>
             <div class="table-responsive">
@@ -41,5 +40,4 @@
             </div>
         </div>
     </div>
-
 </div>

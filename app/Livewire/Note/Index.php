@@ -14,7 +14,6 @@ class Index extends Component
     #[On('NoteCreated')] // Ketika dispatch maka harus di Listen atau ON
     public function testData(Note $note)
     {
-        // $this->dispatch('notify');
         $this->dispatch('notify');
     }
 

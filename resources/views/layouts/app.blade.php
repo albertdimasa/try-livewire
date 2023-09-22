@@ -23,6 +23,11 @@
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        document.addEventListener('notify', () => {
+            $('#alert').delay(3000).fadeOut();
+        });
+    </script>
     @stack('js')
 </body>
 
