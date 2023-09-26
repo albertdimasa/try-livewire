@@ -9,7 +9,10 @@ class Logout extends Component
 {
     public function logout()
     {
+        add_task("Melakukan Log Out", Auth::id());
+
         Auth::logout();
+        
         return redirect()->route('login');
     }
 

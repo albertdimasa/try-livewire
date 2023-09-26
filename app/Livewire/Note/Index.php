@@ -20,6 +20,8 @@ class Index extends Component
 
     public function delete(Note $note)
     {
+        add_task("Delete note: dengan nilai: $note->text", $note->user_id);
+
         $note->delete();
     }
     

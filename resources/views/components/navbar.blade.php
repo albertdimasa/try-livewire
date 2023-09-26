@@ -10,6 +10,7 @@
                 <x-nav-item :active="request()->routeIs('home')" href='/'>Home</x-nav-item>
                 <x-nav-item :active="request()->routeIs('about')" :href="route('about')">About</x-nav-item>
                 <x-nav-item :active="Route::is('note.*')" href="{{ route('note.index') }}">Notes</x-nav-item>
+                <x-nav-item :active="request()->routeIs('history')" :href="route('history')">History</x-nav-item>
                 @guest
                     <x-nav-item :active="request()->routeIs('auth.*')" :href="route('auth.register')" :add="'bg-primary rounded '">Register</x-nav-item>
                 @else

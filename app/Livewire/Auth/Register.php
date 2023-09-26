@@ -29,6 +29,8 @@ class Register extends Component
         ]);
 
         if($user) {
+            add_task("Register Berhasil ", $user->id);
+
             session()->flash('success', 'Register Berhasil!.');
             return redirect()->route('login');
         }

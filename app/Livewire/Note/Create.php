@@ -31,6 +31,8 @@ class Create extends Component
 
         $note = Note::create($validated);
         
+        add_task("Create note: dengan nilai: $note->text", $note->user_id);
+
         session()->flash('message', 'Data Berhasil tersimpan');
 
         $this->reset();
@@ -43,8 +45,13 @@ class Create extends Component
     public function update(Note $note)
     {
         $validated = $this->validate();
+        
+        $oldNote = $note->text;
 
         $note->update($validated);
+
+        add_task("Edit note: $oldNote dengan nilai: $note->text", $note->user_id);
+
         session()->flash('message', 'Data Berhasil terupdate');
 
         $this->reset();
