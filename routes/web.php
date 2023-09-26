@@ -9,9 +9,9 @@ use App\Livewire\Note;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'guest'], function () {
-    Route::get('register', Register::class)->name('auth.register');
-    Route::get('login', Login::class)->name('auth.login');
-    Route::get('logout', Logout::class)->name('auth.logout');
+    Route::get('register', Register::class)->name('register');
+    Route::get('login', Login::class)->name('login');
+    Route::get('logout', Logout::class)->name('logout');
 });
 
 Route::group(['middleware' => 'auth'], function () {

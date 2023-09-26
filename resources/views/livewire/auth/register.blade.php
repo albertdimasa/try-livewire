@@ -51,8 +51,8 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary btn-block mt-3">Register</button>
-            <p class="mt-1">Sudah punya akun? <a wire:navigate href="{{ route('auth.login') }}">Login</a></p>
+            <button type="submit" class="btn btn-sm btn-primary btn-block mt-3">Register</button>
+            <p class="mt-1">Sudah punya akun? <a wire:navigate href="{{ route('login') }}">Login</a></p>
         </form>
     </div>
 </div>

@@ -30,7 +30,7 @@ class Register extends Component
 
         if($user) {
             session()->flash('success', 'Register Berhasil!.');
-            return redirect()->route('auth.login');
+            return redirect()->route('login');
         }
     }
     
