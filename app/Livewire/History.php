@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\History as HistoryModel;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use PowerComponents\LivewirePowerGrid\Button;
 use PowerComponents\LivewirePowerGrid\Column;
 use PowerComponents\LivewirePowerGrid\Exportable;
@@ -15,6 +16,7 @@ use PowerComponents\LivewirePowerGrid\Header;
 use PowerComponents\LivewirePowerGrid\PowerGrid;
 use PowerComponents\LivewirePowerGrid\PowerGridColumns;
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
+use PowerComponents\LivewirePowerGrid\Responsive;
 
 final class History extends PowerGridComponent
 {
@@ -35,35 +37,34 @@ final class History extends PowerGridComponent
 
     public function datasource(): Builder
     {
-        return HistoryModel::query();
+        return HistoryModel::query()->where('user_id', Auth::id())->orderBy('created_at', 'DESC');
     }
 
     public function addColumns(): PowerGridColumns
     {
         return PowerGrid::columns()
-            ->addColumn('id')
-            ->addColumn('name')
-            ->addColumn('name_lower', fn (HistoryModel $model) => strtolower(e($model->name)))
-            ->addColumn('created_at')
-            ->addColumn('created_at_formatted', fn (HistoryModel $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
+            // ->addColumn('no')
+            ->addColumn('task')
+            ->addColumn('created_at');
+        // ->addColumn('created_at_formatted', fn (HistoryModel $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
     }
+
 
     public function columns(): array
     {
         return [
-            Column::make('ID', 'id')
-                ->searchable()
-                ->sortable(),
+            // Column::make("No", "no"),
 
             Column::make('Task', 'task')
                 ->searchable()
                 ->sortable(),
 
             Column::make('Created at', 'created_at')
-                ->hidden(),
+                ->searchable()
+                ->sortable(),
 
-            Column::make('Created at', 'created_at_formatted', 'created_at')
-                ->searchable(),
+            // Column::make('Created at', 'created_at_formatted', 'created_at')
+            //     ->searchable(),
 
             // Column::action('Action')
         ];
