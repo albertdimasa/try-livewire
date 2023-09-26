@@ -4,6 +4,6 @@
     @endguest
 
     @auth
-        Hai
+        Hai, <b>{{ auth()->user()->name }}</b>
     @endauth
 </div>

@@ -3,9 +3,10 @@
 namespace App\Livewire\Auth;
 
 use Illuminate\Support\Facades\Auth;
-use Livewire\Attributes\On;
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 
+#[Layout('layouts.auth')]
 class Login extends Component
 {
     public $email;

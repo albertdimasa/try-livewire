@@ -3,6 +3,7 @@
 namespace App\Livewire\Note;
 
 use App\Models\Note;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -29,8 +30,7 @@ class Index extends Component
 
     public function render()
     {
-        return view('livewire.note.index', [
-            'notes' => Note::query()->latest()->get()
-        ]);
+        $notes = Note::where('user_id', Auth::id())->latest()->get();
+        return view('livewire.note.index', ['notes' => $notes]);
     }
 }

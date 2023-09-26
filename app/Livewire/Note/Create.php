@@ -3,6 +3,7 @@
 namespace App\Livewire\Note;
 
 use App\Models\Note;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
@@ -26,6 +27,7 @@ class Create extends Component
     public function save()
     {
         $validated = $this->validate();
+        $validated['user_id'] = Auth::id();
 
         $note = Note::create($validated);
         

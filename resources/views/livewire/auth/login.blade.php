@@ -29,7 +29,8 @@
                 @enderror
             </div>
             <button type="submit" class="btn btn-primary btn-block mt-3">Login</button>
-            <p class="mt-1">Daftar dulu yuk! <a wire:navigate href="{{ route('auth.register') }}">Register</a></p>
+            <p class="mt-1">Daftar dulu yuk! <a wire:navigate href="{{ route('auth.register') }}">Register</a>
+            </p>
         </form>
     </div>
 </div>

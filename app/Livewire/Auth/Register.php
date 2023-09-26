@@ -3,8 +3,10 @@
 namespace App\Livewire\Auth;
 
 use App\Models\User;
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 
+#[Layout('layouts.auth')]
 class Register extends Component
 {
     public $name;
