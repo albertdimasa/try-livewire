@@ -29,8 +29,6 @@ class Login extends Component
         } else {
             session()->flash('message', 'Email atau Password Anda salah!');
             
-            add_task("Login Gagal", 0);
-
             $this->reset();
         }
     }
