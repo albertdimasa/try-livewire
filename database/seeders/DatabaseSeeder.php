@@ -7,6 +7,7 @@ namespace Database\Seeders;
 use App\Models\History;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,21 +16,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::create([
-            'name' => 'demo',
-            'email' => 'demo@example.com',
+        $user = User::create([
+            'name' => 'user',
+            'email' => 'user@user.com',
             'password' => bcrypt('12345678')
         ]);
         
-        User::create([
-            'name' => 'demo',
-            'email' => 'demo@example.com',
+        $admin = User::create([
+            'name' => 'admin',
+            'email' => 'adm@admin.com',
             'password' => bcrypt('12345678')
         ]);
 
-        History::create([
-            'task'=>'Gagal',
-            'user_id'=>0
-        ]);
+        $user_role  = Role::create(['name' => 'user']);
+        $test  = Role::create(['name' => 'test']);
+        $admin_role = Role::create(['name' => 'admin']);
+
+        $user->assignRole($user_role);
+        $user->assignRole($test);
+        $admin->assignRole($admin_role);
     }
 }

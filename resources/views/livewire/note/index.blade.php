@@ -4,7 +4,6 @@
             @livewire('note.create')
         </div>
         <div class="col-md-7">
-            <h5 class="card-title">Notes</h5>
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <thead>
@@ -19,8 +18,8 @@
                         @forelse ($notes as $item)
                             <tr>
                                 <td>{{ $item->text }}</td>
-                                <td>{{ $item->created_at }}</td>
-                                <td>{{ $item->updated_at }}</td>
+                                <td>{{ $item->created_at->diffForHumans() }}</td>
+                                <td>{{ $item->updated_at->diffForHumans() }}</td>
                                 <td>
                                     <div class="d-flex gap-2">
                                         <button class="btn btn-sm btn-warning" wire:click='edit({{ $item->id }})'>
@@ -53,3 +52,46 @@
         </div>
     </div>
 </div>
+@push('js')
+    <script>
+        document.addEventListener('livewire:init', () => {
+            Livewire.on('notify', (event) => {
+                switch (event[0]) {
+                    case 'success':
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Note berhasil dibuat',
+                            showConfirmButton: false,
+                            timer: 1300
+                        })
+                        break;
+                    case 'update':
+                        Swal.fire({
+                            icon: 'info',
+                            title: 'Note berhasil diubah',
+                            showConfirmButton: false,
+                            timer: 1300
+                        })
+                        break;
+                    case 'delete':
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Note berhasil dihapus',
+                            showConfirmButton: false,
+                            timer: 1300
+                        })
+                        break;
+                    default:
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Action eksekusi',
+                            showConfirmButton: false,
+                            timer: 1300
+                        })
+                        break;
+                }
+
+            });
+        });
+    </script>
+@endpush

@@ -3,10 +3,9 @@
 namespace App\Livewire\Auth;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
-
-use function PHPSTORM_META\type;
 
 #[Layout('layouts.auth')]
 class Login extends Component
@@ -14,29 +13,44 @@ class Login extends Component
     public $email;
     public $password;
     public $show_text;
+    public $isDisabled;
 
     public function login()
     {
-        $this->validate([
-            'email'     => 'required|email',
-            'password'  => 'required'
+        $this->isDisabled = true;
+
+        $validated = Validator::make($this->all(), [
+            'email' => 'required|email',
+            'password' => 'required',
         ]);
 
+        if ($validated->fails()) {
+            $this->isDisabled = false;
+        }
+        
         if(Auth::attempt(['email' => $this->email, 'password'=> $this->password])) {
             add_task("Melakukan Login ", Auth::id());
+            return redirect('/');
 
-            $this->redirect('/');
         } else {
             session()->flash('message', 'Email atau Password Anda salah!');
-            
             $this->reset();
+
         }
     }
 
-    public function akun_demo()
+    public function akun_user()
     {
-        $this->email = 'demo@example.com';
+        $this->email = 'user@user.com';
         $this->password = '12345678';
+        $this->login();
+    }
+
+    public function akun_admin()
+    {
+        $this->email = 'adm@admin.com';
+        $this->password = '12345678';
+        $this->login();
     }
 
     public function show_password()

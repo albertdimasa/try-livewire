@@ -38,8 +38,14 @@
                     </div>
                 @enderror
             </div>
-            <button type="submit" class="btn btn-sm btn-primary btn-block">Login</button>
-            <h6 class="mt-2 btn btn-sm btn-success" wire:click='akun_demo'>Gunakan Akun Demo</h6>
+            <div class="d-flex align-items-center gap-2">
+                <button type="submit" class="btn btn-sm btn-primary btn-block"
+                    {{ $isDisabled ? 'disabled' : '' }}>Login</button>
+                <button class="btn btn-sm btn-success" wire:click='akun_user' {{ $isDisabled ? 'disabled' : '' }}>Akun
+                    User</button>
+                <button class="btn btn-sm btn-warning" wire:click='akun_admin' {{ $isDisabled ? 'disabled' : '' }}>Akun
+                    Admin</button>
+            </div>
             <p class="mt-1">Daftar dulu yuk! <a wire:navigate href="{{ route('register') }}">Register</a>
             </p>
         </form>

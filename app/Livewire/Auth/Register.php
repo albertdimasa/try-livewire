@@ -28,6 +28,8 @@ class Register extends Component
             'password'  => bcrypt($this->password)
         ]);
 
+        $user->assignRole('user');
+
         if($user) {
             add_task("Register Berhasil ", $user->id);
 

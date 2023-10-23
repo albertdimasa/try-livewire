@@ -37,13 +37,18 @@ final class History extends PowerGridComponent
 
     public function datasource(): Builder
     {
-        return HistoryModel::query()->where('user_id', Auth::id())->orderBy('created_at', 'DESC');
+        return HistoryModel::where('user_id', Auth::id())->orderBy('created_at', 'DESC');
+    }
+
+    public function relationSearch(): array
+    {
+        return [];
     }
 
     public function addColumns(): PowerGridColumns
     {
         return PowerGrid::columns()
-            // ->addColumn('no')
+            ->addColumn('no', fn ($data) => $data->where('id', '>', $data->id)->count()+1)
             ->addColumn('task')
             ->addColumn('created_at');
         // ->addColumn('created_at_formatted', fn (HistoryModel $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
@@ -53,14 +58,11 @@ final class History extends PowerGridComponent
     public function columns(): array
     {
         return [
-            // Column::make("No", "no"),
+            Column::make('No', 'no'),
 
-            Column::make('Task', 'task')
-                ->searchable()
-                ->sortable(),
+            Column::make('Task', 'task'),
 
             Column::make('Created at', 'created_at')
-                ->searchable()
                 ->sortable(),
 
             // Column::make('Created at', 'created_at_formatted', 'created_at')

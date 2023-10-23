@@ -31,9 +31,7 @@ class Create extends Component
 
         $note = Note::create($validated);
         
-        add_task("Create note: dengan nilai: $note->text", $note->user_id);
-
-        session()->flash('message', 'Data Berhasil tersimpan');
+        add_task("Create note dengan nilai: $note->text", $note->user_id);
 
         $this->reset();
 
@@ -52,13 +50,11 @@ class Create extends Component
 
         add_task("Edit note: $oldNote dengan nilai: $note->text", $note->user_id);
 
-        session()->flash('message', 'Data Berhasil terupdate');
-
         $this->reset();
         $this->isEdit = false;
 
         // Ketika create data maka akan muncul tanpa refresh
-        $this->dispatch('NoteCreated', $note->id);
+        $this->dispatch('NoteCreated', $note->id, 'update');
     }
 
     public function render()

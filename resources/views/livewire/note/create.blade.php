@@ -1,9 +1,4 @@
 <div>
-    @if (session()->has('message'))
-        <div class="alert alert-success" id="alert">
-            {{ session('message') }}
-        </div>
-    @endif
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">Add Note</h5>

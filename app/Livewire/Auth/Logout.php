@@ -3,6 +3,7 @@
 namespace App\Livewire\Auth;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 
 class Logout extends Component
@@ -10,10 +11,10 @@ class Logout extends Component
     public function logout()
     {
         add_task("Melakukan Log Out", Auth::id());
-
+        Session::flush();
         Auth::logout();
         
-        return redirect()->route('login');
+        return redirect('/');
     }
 
     public function render()

@@ -13,9 +13,13 @@ use Livewire\Component;
 class Index extends Component
 {
     #[On('NoteCreated')] // Ketika dispatch maka harus di Listen atau ON
-    public function testData(Note $note)
+    public function testData(Note $note, $type = 'success')
     {
-        $this->dispatch('notify');
+        if ($type=='success') {
+            $this->dispatch('notify', 'success');
+        } else {
+            $this->dispatch('notify', 'update');
+        }
     }
 
     public function delete(Note $note)
@@ -23,6 +27,8 @@ class Index extends Component
         add_task("Delete note: dengan nilai: $note->text", $note->user_id);
 
         $note->delete();
+
+        $this->dispatch('notify', 'delete');
     }
     
     public function edit(Note $note)
@@ -32,7 +38,7 @@ class Index extends Component
 
     public function render()
     {
-        $notes = Note::where('user_id', Auth::id())->latest()->get();
+        $notes = Note::latest()->get();
         return view('livewire.note.index', ['notes' => $notes]);
     }
 }
