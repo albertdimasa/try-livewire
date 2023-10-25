@@ -6,7 +6,7 @@
         <h3>Petunjuk</h3>
         <p>Absensi dengan QR code adalah metode modern yang efisien dan akurat untuk mencatat kehadiran peserta dengan
             memindai kode QR yang unik yang terhubung ke informasi identifikasi individu. QR Code tersebut akan dipindai
-            oleh petugas yang berjaga didepan.</p>
+            oleh petugas yang berjaga didepan. QR Code tersebut akan refresh tiap 1 menit.</p>
     </div>
 </div>
 @push('js')
@@ -30,6 +30,6 @@
         }
 
         Window.onload = qrcoderefresh();
-        setInterval(qrcoderefresh, 10000);
+        setInterval(qrcoderefresh, 60000);
     </script>
 @endpush

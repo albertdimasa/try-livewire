@@ -14,7 +14,7 @@
                     <th>No</th>
                     <th>User</th>
                     <th>Clock In</th>
-                    <th>Created At</th>
+                    {{-- <th>Created At</th> --}}
                 </tr>
             </thead>
             <tbody>
@@ -23,7 +23,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $item->user->name }}</td>
                         <td>{{ $item->clock_in }}</td>
-                        <td>{{ $item->created_at }}</td>
+                        {{-- <td>{{ $item->created_at }}</td> --}}
                     </tr>
                 @empty
                     <tr>
