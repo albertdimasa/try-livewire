@@ -14,7 +14,6 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.3.0
       with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /home/projekal/public_html/probert/
+          server: ${{ secrets.FTP_SERVER_PRIMARY }}
+          username: ${{ secrets.FTP_USERNAME_PRIMARY }}
+          password: ${{ secrets.FTP_PASSWORD_PRIMARY }}
