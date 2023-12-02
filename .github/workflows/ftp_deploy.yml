@@ -15,5 +15,6 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
           server: "ftp.projek-albert.nyandomain.my.id"
-          username: "primary@projek-albert.nyandomain.my.id"
+          username: "primary"
           password: "Primar!123"
+          server-dir: /
